@@ -1,0 +1,12 @@
+Code Structure
+The code is divided into functions for easy maintenance and understanding. Key functions include:
+
+choose_folder(): Opens a folder selection window and returns the selected folder's path.
+
+organize_by_category(folder): Organizes files in the specified folder into categories using the get_category() function.
+
+get_category(extension): Classifies the file extension into a specific category.
+
+display_ascii_art_list_with_delay(ascii_list, delay): Displays a list of ASCII art with a delay between each display.
+
+main(): The main function that initiates the program execution.
