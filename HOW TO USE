@@ -1,0 +1,13 @@
+<How to Use>
+Download the source code or clone the repository to your machine.
+
+git clone https://github.com/Obentemiller/File-Organizer.git
+Navigate to the project directory.
+
+cd File-Organizer
+Run the program.
+python file_organizer.py
+
+A folder selection window will open. Choose the folder you want to organize and click 'Select Folder'.
+
+The program will automatically organize the files in the selected folder into specific categories.
