@@ -1,0 +1,6 @@
+Features
+Choose Folder: Utilizes the tkinter library to provide a simple graphical interface to choose the folder to organize.
+
+Organize by Category: Separates files into categories, such as Documents, Images, Videos, Shortcuts/Executables, and Others, based on their file extensions.
+
+ASCII Art Display: Displays animated ASCII art for a visually pleasing experience during program execution.
