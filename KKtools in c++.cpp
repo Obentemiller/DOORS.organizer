@@ -262,20 +262,6 @@ static void renova_interface() {
     std::cout << logo << std::endl;
 }
 
-static char intrografic() {
-    char in = ' ';
-
-    while (in != 'q') {
-        limparTela();
-        std::cout << logo << std::endl;
-        std::cout << "  <Pressione 'q' para continuar>" << std::endl;
-        in = _getch();
-    }
-
-    brightness_transition(1);
-    return(in);
-}
-
 
 std::wstring OpenDirectoryDialog(HWND hwndOwner) {
     std::wstring selectedDirectory;
@@ -429,8 +415,6 @@ static char selectgrafic() {
             S_DAF = modo;
         }
     }
-
-    brightness_transition(1);
     return(in);
 }
 
@@ -533,19 +517,12 @@ static void creative_tools() {
             }
         }
     }
-
-    Sleep(1000);
-    brightness_transition(1);
-    limparTela();
-    finalização();
 }
 
 
 static void file_organizer() {
     renova_interface();
 
-
-    // Abrir o diálogo de seleção de diretório
     std::wstring diretorio = OpenDirectoryDialog(NULL);
 
     if (!diretorio.empty()) {
@@ -555,32 +532,56 @@ static void file_organizer() {
     else {
         std::wcout << L"Nenhum diretório selecionado. Encerrando o programa." << std::endl;
     }
-
-
-
-    Sleep(1000);
-    renova_interface();
-    finalização();
 }
 
-int main() {
+int main() { 
+    goto inicio_st;
 inicio:
-    intrografic();
+    limparTela();
+    brightness_transition(1);
+    //////////////////////////////////////////////////////////////////////////////////////////////
+inicio_st:
+    char in = ' ';
 
-    char selection = selectgrafic();
-    if (selection == 'q') {
-        switch (S_DAF) {
-        case 0:
-            creative_tools();
-            return 0;
-        case 1:
-            file_organizer();
+    while (in != 'q') {
+
+        if (in == 27) {
+            brightness_transition(1);
+            limparTela();
+            finalização();
             return 0;
         }
-    }
-    else if (selection == 27) {
-        goto inicio;
-    }
 
+        limparTela();
+        std::cout << logo << std::endl;
+        std::cout << "  <Pressione 'q' para continuar>" << "  <'esc' para fechar>" << std::endl;
+        in = _getch();
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    brightness_transition(1);
+
+        char selection = selectgrafic();
+        if (selection == 'q') {
+            switch (S_DAF) {
+            case 0:
+                limparTela();
+                brightness_transition(1);
+                creative_tools();
+                brightness_transition(1);
+                goto inicio;
+                return 0;
+            case 1:
+                limparTela();
+                brightness_transition(1);
+                file_organizer();
+                brightness_transition(1);
+                goto inicio;
+                return 0;
+            }
+        }
+        else if (selection == 27) {
+            renova_interface();
+            goto inicio;
+        }
     return 0;
 }
